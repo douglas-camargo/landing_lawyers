@@ -45,104 +45,122 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { name: 'Facebook', href: '#', icon: Facebook },
-    { name: 'Twitter', href: '#', icon: Twitter },
-    { name: 'Instagram', href: '#', icon: Instagram },
-    { name: 'LinkedIn', href: '#', icon: Linkedin }
+    { name: 'Facebook', href: 'https://facebook.com/lexfirm', icon: Facebook },
+    { name: 'Twitter', href: 'https://twitter.com/lexfirm', icon: Twitter },
+    { name: 'Instagram', href: 'https://instagram.com/lexfirm', icon: Instagram },
+    { name: 'LinkedIn', href: 'https://linkedin.com/company/lexfirm', icon: Linkedin }
   ];
 
   return (
-    <footer id="contacto" className="bg-gray-900 text-white">
+    <footer 
+      id="contacto" 
+      className="bg-gray-900 text-white"
+      role="contentinfo"
+      aria-labelledby="footer-heading"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div className="space-y-6">
+          <section className="space-y-6">
             <Logo size="lg" className="text-white" />
             <p className="text-gray-400 leading-relaxed">
               Más de 25 años de experiencia en el sector legal, 
               ofreciendo servicios de alta calidad y resultados probados.
             </p>
-            <div className="flex space-x-4">
+            <nav className="flex space-x-4" aria-label="Redes sociales">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
-                  className="text-gray-400 hover:text-white transition-colors duration-200"
-                  aria-label={social.name}
+                  className="text-gray-400 hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded"
+                  aria-label={`Síguenos en ${social.name}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <social.icon size={20} />
+                  <social.icon size={20} aria-hidden="true" />
                 </a>
               ))}
-            </div>
-          </div>
+            </nav>
+          </section>
 
           {/* Services */}
-          <div className="space-y-6">
-            <h3 className="text-lg font-semibold">Servicios</h3>
-            <ul className="space-y-3">
+          <nav className="space-y-6" aria-labelledby="services-heading">
+            <h3 id="services-heading" className="text-lg font-semibold">Servicios</h3>
+            <ul className="space-y-3" role="list">
               {services.map((service, index) => (
-                <li key={index}>
+                <li key={index} role="listitem">
                   <FooterLink href={service.href}>
                     {service.name}
                   </FooterLink>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
           {/* Quick Links */}
-          <div className="space-y-6">
-            <h3 className="text-lg font-semibold">Enlaces Rápidos</h3>
-            <ul className="space-y-3">
+          <nav className="space-y-6" aria-labelledby="quick-links-heading">
+            <h3 id="quick-links-heading" className="text-lg font-semibold">Enlaces Rápidos</h3>
+            <ul className="space-y-3" role="list">
               {quickLinks.map((link, index) => (
-                <li key={index}>
+                <li key={index} role="listitem">
                   <button
                     onClick={() => scrollToSection(link.href.replace('#', ''))}
-                    className="text-gray-400 hover:text-white transition-colors duration-200"
+                    className="text-gray-400 hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded px-2 py-1"
+                    type="button"
                   >
                     {link.name}
                   </button>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
           {/* Contact Info */}
-          <div className="space-y-6">
-            <h3 className="text-lg font-semibold">Contacto</h3>
-            <div className="space-y-4">
+          <section className="space-y-6" aria-labelledby="contact-heading">
+            <h3 id="contact-heading" className="text-lg font-semibold">Contacto</h3>
+            <address className="space-y-4 not-italic">
               <div className="flex items-start space-x-3">
-                <Phone className="h-5 w-5 text-blue-400 flex-shrink-0 mt-1" />
+                <Phone className="h-5 w-5 text-blue-400 flex-shrink-0 mt-1" aria-hidden="true" />
                 <div>
                   <p className="text-gray-400">Teléfono</p>
-                  <p className="text-white">+34 900 123 456</p>
+                  <a href="tel:+34900123456" className="text-white hover:text-blue-400 transition-colors">
+                    +34 900 123 456
+                  </a>
                 </div>
               </div>
               
               <div className="flex items-start space-x-3">
-                <Mail className="h-5 w-5 text-blue-400 flex-shrink-0 mt-1" />
+                <Mail className="h-5 w-5 text-blue-400 flex-shrink-0 mt-1" aria-hidden="true" />
                 <div>
                   <p className="text-gray-400">Email</p>
-                  <p className="text-white">info@lexfirm.es</p>
+                  <a href="mailto:info@lexfirm.es" className="text-white hover:text-blue-400 transition-colors">
+                    info@lexfirm.es
+                  </a>
                 </div>
               </div>
               
               <div className="flex items-start space-x-3">
-                <MapPin className="h-5 w-5 text-blue-400 flex-shrink-0 mt-1" />
+                <MapPin className="h-5 w-5 text-blue-400 flex-shrink-0 mt-1" aria-hidden="true" />
                 <div>
                   <p className="text-gray-400">Dirección</p>
-                  <p className="text-white">Calle Mayor, 123<br />28001 Madrid, España</p>
+                  <p className="text-white">
+                    Calle Gran Vía, 123<br />
+                    28013 Madrid, España
+                  </p>
                 </div>
               </div>
               
               <div className="flex items-start space-x-3">
-                <Clock className="h-5 w-5 text-blue-400 flex-shrink-0 mt-1" />
+                <Clock className="h-5 w-5 text-blue-400 flex-shrink-0 mt-1" aria-hidden="true" />
                 <div>
                   <p className="text-gray-400">Horario</p>
-                  <p className="text-white">Lun - Vie: 9:00 - 18:00<br />Sáb: 9:00 - 14:00</p>
+                  <p className="text-white">
+                    Lun - Vie: 9:00 - 18:00<br />
+                    Sáb: 9:00 - 14:00
+                  </p>
                 </div>
               </div>
-            </div>
+            </address>
 
             <Button
               onClick={openWhatsApp}
@@ -152,7 +170,7 @@ const Footer = () => {
             >
               Consulta Gratuita
             </Button>
-          </div>
+          </section>
         </div>
 
         {/* Bottom Bar */}
@@ -161,14 +179,48 @@ const Footer = () => {
             <p className="text-gray-400 text-sm">
               © 2024 LexFirm. Todos los derechos reservados.
             </p>
-            <div className="flex space-x-6 text-sm">
-              <FooterLink href="#">Política de Privacidad</FooterLink>
-              <FooterLink href="#">Términos de Servicio</FooterLink>
-              <FooterLink href="#">Cookies</FooterLink>
-            </div>
+            <nav className="flex space-x-6 text-sm" aria-label="Enlaces legales">
+              <FooterLink href="/privacidad">Política de Privacidad</FooterLink>
+              <FooterLink href="/terminos">Términos de Servicio</FooterLink>
+              <FooterLink href="/cookies">Cookies</FooterLink>
+            </nav>
           </div>
         </div>
       </div>
+
+      {/* Structured Data for Contact Information */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LegalService",
+          "name": "LexFirm",
+          "description": "Bufete de abogados especializado en derecho penal, corporativo y familiar en Madrid",
+          "url": "https://landing-lawyers.vercel.app/",
+          "telephone": "+34-900-123-456",
+          "email": "info@lexfirm.es",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Calle Gran Vía 123",
+            "addressLocality": "Madrid",
+            "postalCode": "28013",
+            "addressCountry": "ES"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 40.4168,
+            "longitude": -3.7038
+          },
+          "openingHours": "Mo-Fr 09:00-18:00, Sa 09:00-14:00",
+          "priceRange": "€€",
+          "areaServed": "Madrid, España",
+          "sameAs": [
+            "https://facebook.com/lexfirm",
+            "https://twitter.com/lexfirm",
+            "https://instagram.com/lexfirm",
+            "https://linkedin.com/company/lexfirm"
+          ]
+        })}
+      </script>
     </footer>
   );
 };
