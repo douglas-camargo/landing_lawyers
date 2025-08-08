@@ -51,45 +51,54 @@ const About = () => {
   };
 
   return (
-    <section id="nosotros" className="py-20 bg-white">
+    <section 
+      id="nosotros" 
+      className="py-20 bg-white"
+      aria-labelledby="about-heading"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <h2 className="text-4xl font-bold text-gray-900">
+          <article className="space-y-8">
+            <header className="space-y-4">
+              <h2 
+                id="about-heading"
+                className="text-4xl font-bold text-gray-900"
+              >
                 Sobre <span className="text-blue-800">LexFirm</span>
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed">
                 Somos un bufete de abogados comprometido con la excelencia legal y la defensa 
                 integral de los derechos de nuestros clientes.
               </p>
+            </header>
+
+            <div className="space-y-4">
+              <p className="text-gray-700 leading-relaxed">
+                Con más de 25 años de experiencia en el sector legal, hemos construido una 
+                reputación sólida basada en resultados exitosos, atención personalizada y 
+                un compromiso inquebrantable con la justicia.
+              </p>
+
+              <p className="text-gray-700 leading-relaxed">
+                Nuestro equipo de abogados especializados trabaja con dedicación para 
+                ofrecer soluciones legales efectivas y estratégicas, adaptadas a las 
+                necesidades específicas de cada caso.
+              </p>
             </div>
-
-            <p className="text-gray-700 leading-relaxed">
-              Con más de 25 años de experiencia en el sector legal, hemos construido una 
-              reputación sólida basada en resultados exitosos, atención personalizada y 
-              un compromiso inquebrantable con la justicia.
-            </p>
-
-            <p className="text-gray-700 leading-relaxed">
-              Nuestro equipo de abogados especializados trabaja con dedicación para 
-              ofrecer soluciones legales efectivas y estratégicas, adaptadas a las 
-              necesidades específicas de cada caso.
-            </p>
 
             {/* Values */}
-            <div className="space-y-3">
+            <section className="space-y-3">
               <h3 className="text-xl font-semibold text-gray-900">Nuestros Valores</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2" role="list">
                 {values.map((value, index) => (
-                  <div key={index} className="flex items-center space-x-2">
-                    <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
+                  <li key={index} className="flex items-center space-x-2">
+                    <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" aria-hidden="true" />
                     <span className="text-gray-700">{value}</span>
-                  </div>
+                  </li>
                 ))}
-              </div>
-            </div>
+              </ul>
+            </section>
 
             <Button
               onClick={openWhatsApp}
@@ -99,38 +108,98 @@ const About = () => {
             >
               Consultar Ahora
             </Button>
-          </div>
+          </article>
 
           {/* Right Content */}
           <div className="space-y-8">
             {/* Image */}
-            <div className="relative">
+            <figure className="relative">
               <img 
                 src="https://images.pexels.com/photos/5668473/pexels-photo-5668473.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Equipo de abogados"
+                alt="Equipo de abogados profesionales de LexFirm trabajando en casos legales"
                 className="w-full h-96 object-cover rounded-xl shadow-lg"
+                loading="lazy"
+                decoding="async"
               />
-              <div className="absolute -bottom-6 -right-6 bg-blue-800 text-white p-6 rounded-xl shadow-lg">
+              <figcaption className="sr-only">Equipo de abogados de LexFirm</figcaption>
+              <div className="absolute -bottom-6 -right-6 bg-blue-800 text-white p-6 rounded-xl shadow-lg" role="status" aria-label="Estadísticas de casos exitosos">
                 <div className="text-center">
                   <div className="text-3xl font-bold">1000+</div>
                   <div className="text-sm">Casos Exitosos</div>
                 </div>
               </div>
-            </div>
+            </figure>
 
             {/* Features Grid */}
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-6" role="list" aria-label="Características del bufete">
               {features.map((feature, index) => (
-                <FeatureCard
-                  key={index}
-                  feature={feature}
-                  className="bg-gray-50 rounded-xl"
-                />
+                <div key={index} role="listitem">
+                  <FeatureCard
+                    feature={feature}
+                    className="bg-gray-50 rounded-xl"
+                  />
+                </div>
               ))}
             </div>
           </div>
         </div>
       </div>
+
+      {/* Structured Data for About Section */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "LexFirm",
+          "description": "Bufete de abogados especializado en derecho penal, corporativo y familiar en Madrid",
+          "url": "https://landing-lawyers.vercel.app/",
+                      "logo": "https://landing-lawyers.vercel.app/logo.png",
+            "image": "https://landing-lawyers.vercel.app/office-image.jpg",
+          "telephone": "+34-900-123-456",
+          "email": "info@lexfirm.es",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Calle Gran Vía 123",
+            "addressLocality": "Madrid",
+            "postalCode": "28013",
+            "addressCountry": "ES"
+          },
+          "foundingDate": "1998",
+          "numberOfEmployees": "15",
+          "award": [
+            "25+ años de experiencia",
+            "1000+ casos exitosos",
+            "Equipo especializado"
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Servicios Legales",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Derecho Penal"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Derecho Corporativo"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Derecho Familiar"
+                }
+              }
+            ]
+          }
+        })}
+      </script>
     </section>
   );
 };

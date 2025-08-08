@@ -1,26 +1,24 @@
 import React from 'react';
-import ComponenteSvg from './ComponenteSvg';
-import { generarUrlWhatsApp } from '../../utils/deviceUtils';
+import { MessageCircle } from 'lucide-react';
+import { abrirWhatsApp } from '../../utils/deviceUtils';
 
-const ButtonWhatsapp = ({
-  numero = '+584241232755', 
-  mensaje = 'Hola!%20necesito%20información%20sobre%20tus%20servicios%20legales.', 
-  cssContenedorBotonWhatsapp = "fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 animate-bounce",
-  cssSvg = "w-[25px] h-[25px]"
-}) => {
+const ButtonWhatsapp = () => {
+  const handleClick = () => {
+    const phoneNumber = '34900123456';
+    const message = 'Hola, me gustaría solicitar una consulta legal gratuita.';
+    abrirWhatsApp(phoneNumber, message);
+  };
 
   return (
-    <>
-      <a 
-        className={cssContenedorBotonWhatsapp}
-        href={generarUrlWhatsApp(numero, mensaje)}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Contactar por WhatsApp"
-      >
-        <ComponenteSvg tipo="whatsapp" cssSvg={cssSvg} />
-      </a>
-    </>
+    <button
+      onClick={handleClick}
+      className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-50 focus:outline-none focus:ring-4 focus:ring-green-300"
+      aria-label="Abrir WhatsApp para consulta gratuita"
+      title="Consulta gratuita por WhatsApp"
+    >
+      <MessageCircle size={24} />
+      <span className="sr-only">WhatsApp</span>
+    </button>
   );
 };
 
