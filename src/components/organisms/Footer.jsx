@@ -45,10 +45,10 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { name: 'Facebook', href: 'https://facebook.com/lexfirm', icon: Facebook },
-    { name: 'Twitter', href: 'https://twitter.com/lexfirm', icon: Twitter },
-    { name: 'Instagram', href: 'https://instagram.com/lexfirm', icon: Instagram },
-    { name: 'LinkedIn', href: 'https://linkedin.com/company/lexfirm', icon: Linkedin }
+    { name: 'Facebook', href: 'https://www.facebook.com', icon: Facebook },
+    { name: 'Twitter', href: 'https://twitter.com', icon: Twitter },
+    { name: 'Instagram', href: 'https://www.instagram.com', icon: Instagram },
+    { name: 'LinkedIn', href: 'https://www.linkedin.com', icon: Linkedin }
   ];
 
   return (
@@ -72,10 +72,11 @@ const Footer = () => {
                 <a
                   key={index}
                   href={social.href}
-                  className="text-gray-400 hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded"
-                  aria-label={`Síguenos en ${social.name}`}
+                  className="text-gray-400 hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded p-2 hover:bg-gray-800"
+                  aria-label={`Síguenos en ${social.name} (se abre en nueva pestaña)`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  title={`Síguenos en ${social.name}`}
                 >
                   <social.icon size={20} aria-hidden="true" />
                 </a>
@@ -214,10 +215,10 @@ const Footer = () => {
           "priceRange": "€€",
           "areaServed": "Madrid, España",
           "sameAs": [
-            "https://facebook.com/lexfirm",
-            "https://twitter.com/lexfirm",
-            "https://instagram.com/lexfirm",
-            "https://linkedin.com/company/lexfirm"
+            "https://www.facebook.com/lexfirm.abogados",
+            "https://twitter.com/lexfirm_legal",
+            "https://www.instagram.com/lexfirm.abogados",
+            "https://www.linkedin.com/company/lexfirm-abogados"
           ]
         })}
       </script>
