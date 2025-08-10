@@ -1,9 +1,10 @@
 import React from 'react';
+import { flexCenter, iconSmall } from '../../utils/tailwindClasses';
 
 const StatCard = ({ icon: Icon, value, label, className = '' }) => {
   return (
     <div className={`text-center ${className}`}>
-      <div className="flex items-center justify-center mb-2">
+      <div className={`${flexCenter} mb-2`}>
         <Icon className="h-6 w-6 text-yellow-400" />
       </div>
       <div className="text-2xl font-bold">{value}</div>

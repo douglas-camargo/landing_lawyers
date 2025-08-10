@@ -1,11 +1,12 @@
 import React from 'react';
 import { Star, Quote } from 'lucide-react';
+import { cardBase, cardHover, spacingCard, textHeading, textBody, iconSmall } from '../../utils/tailwindClasses';
 
 const TestimonialCard = ({ testimonial, className = '' }) => {
   const { name, role, content, rating, image } = testimonial;
 
   return (
-    <div className={`bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 ${className}`}>
+    <div className={`${cardBase} ${cardHover} ${spacingCard} ${className}`}>
       <div className="flex items-center mb-6">
         <div className="flex-shrink-0 mr-4">
           <img 
@@ -15,7 +16,7 @@ const TestimonialCard = ({ testimonial, className = '' }) => {
           />
         </div>
         <div className="flex-1">
-          <h4 className="text-lg font-semibold text-gray-900">{name}</h4>
+          <h4 className={textHeading}>{name}</h4>
           <p className="text-gray-600 text-sm">{role}</p>
           <div className="flex items-center mt-1">
             {[...Array(5)].map((_, i) => (
@@ -30,7 +31,7 @@ const TestimonialCard = ({ testimonial, className = '' }) => {
         <Quote className="text-blue-200 w-8 h-8 flex-shrink-0" />
       </div>
       
-      <p className="text-gray-700 leading-relaxed italic">
+      <p className={`${textBody} italic`}>
         "{content}"
       </p>
     </div>

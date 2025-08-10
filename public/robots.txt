@@ -13,7 +13,8 @@ Disallow: /private/
 Disallow: /api/
 
 # Allow important pages
-Allow: /servicios/
-Allow: /contacto/
-Allow: /nosotros/
-Allow: /testimonios/
+Allow: /#services
+Allow: /#contact
+Allow: /#about
+Allow: /#testimonials
+Allow: /#home

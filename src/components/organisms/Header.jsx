@@ -1,36 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Menu, X } from 'lucide-react';
 import Logo from '../atoms/Logo';
 import Navigation from '../molecules/Navigation';
 import MobileMenu from '../molecules/MobileMenu';
+import { useHeader } from '../../hooks/useHeader';
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  const navigationItems = [
-    { id: 'inicio', label: 'Inicio', href: '#inicio' },
-    { id: 'servicios', label: 'Servicios', href: '#servicios' },
-    { id: 'nosotros', label: 'Nosotros', href: '#nosotros' },
-    { id: 'testimonios', label: 'Testimonios', href: '#testimonios' },
-    { id: 'contacto', label: 'Contacto', href: '#contacto' }
-  ];
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsMenuOpen(false);
-  };
+  const { 
+    isMenuOpen, 
+    isScrolled, 
+    navigationItems, 
+    scrollToSection, 
+    toggleMenu 
+  } = useHeader();
 
   return (
     <header 
@@ -50,7 +32,7 @@ const Header = () => {
           />
 
           <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={toggleMenu}
             className="md:hidden text-gray-700 hover:text-blue-800 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-md p-1"
             aria-label={isMenuOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'}
             aria-expanded={isMenuOpen}

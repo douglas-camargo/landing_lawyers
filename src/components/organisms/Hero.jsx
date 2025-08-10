@@ -1,6 +1,7 @@
 import React from 'react';
 import HeroContent from '../molecules/HeroContent';
 import { abrirWhatsApp } from '../../utils/deviceUtils';
+import { gradientPrimary, overlayDark, containerMax, gridResponsive } from '../../utils/tailwindClasses';
 
 const Hero = () => {
   const openWhatsApp = () => {
@@ -10,7 +11,7 @@ const Hero = () => {
   };
 
   const scrollToServices = () => {
-    const servicesSection = document.getElementById('servicios');
+    const servicesSection = document.getElementById('services');
     if (servicesSection) {
       servicesSection.scrollIntoView({ behavior: 'smooth' });
     }
@@ -18,13 +19,13 @@ const Hero = () => {
 
   return (
     <section 
-      id="inicio" 
-      className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 relative overflow-hidden"
+      id="home" 
+      className={`min-h-screen ${gradientPrimary} relative overflow-hidden`}
       role="banner"
       aria-labelledby="hero-heading"
     >
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-black/10" aria-hidden="true"></div>
+      <div className={`absolute inset-0 ${overlayDark}`} aria-hidden="true"></div>
       <div 
         className="absolute inset-0" 
         style={{
@@ -33,8 +34,8 @@ const Hero = () => {
         aria-hidden="true"
       ></div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-8rem)]">
+      <div className={`relative ${containerMax} pt-32 pb-16`}>
+        <div className={`${gridResponsive} items-center min-h-[calc(100vh-8rem)]`}>
           {/* Left Content */}
           <HeroContent 
             onWhatsAppClick={openWhatsApp}

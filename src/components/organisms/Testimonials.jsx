@@ -1,65 +1,18 @@
 import React from 'react';
 import TestimonialCard from '../atoms/TestimonialCard';
+import { containerMax, cardBase, spacingCard } from '../../utils/tailwindClasses';
+import { useTestimonials } from '../../hooks/useTestimonials';
 
 const Testimonials = () => {
-  const testimonials = [
-    {
-      name: 'María González',
-      role: 'Cliente - Derecho Familiar',
-      content: 'El equipo de LexFirm me ayudó durante un proceso de divorcio muy complicado. Su profesionalismo y empatía hicieron toda la diferencia. Recomiendo totalmente sus servicios.',
-      rating: 5,
-      image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150',
-      date: '2024-01-15'
-    },
-    {
-      name: 'Carlos Rodríguez',
-      role: 'CEO - Empresa Tecnológica',
-      content: 'Como empresa, necesitábamos asesoría legal especializada. LexFirm nos proporcionó soluciones estratégicas que protegieron nuestros intereses y facilitaron nuestro crecimiento.',
-      rating: 5,
-      image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=150',
-      date: '2024-01-10'
-    },
-    {
-      name: 'Ana Martínez',
-      role: 'Cliente - Accidente de Tráfico',
-      content: 'Después de mi accidente, no sabía qué hacer. Los abogados de LexFirm me guiaron en todo el proceso y lograron una indemnización justa. Excelente trabajo.',
-      rating: 5,
-      image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150',
-      date: '2024-01-05'
-    },
-    {
-      name: 'Luis Fernández',
-      role: 'Cliente - Derecho Laboral',
-      content: 'Fui despedido injustamente y LexFirm luchó por mis derechos. Su experiencia en derecho laboral fue fundamental para resolver mi caso favorablemente.',
-      rating: 5,
-      image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=150',
-      date: '2023-12-20'
-    },
-    {
-      name: 'Sofía Jiménez',
-      role: 'Cliente - Derecho Penal',
-      content: 'En un momento muy difícil de mi vida, LexFirm me brindó la defensa legal que necesitaba. Su dedicación y conocimiento del derecho penal fueron excepcionales.',
-      rating: 5,
-      image: 'https://images.pexels.com/photos/1462630/pexels-photo-1462630.jpeg?auto=compress&cs=tinysrgb&w=150',
-      date: '2023-12-15'
-    },
-    {
-      name: 'Roberto Silva',
-      role: 'Cliente - Derecho Civil',
-      content: 'Tenía un conflicto complejo de propiedades. Los abogados de LexFirm analizaron mi caso con detalle y encontraron la solución perfecta. Muy satisfecho.',
-      rating: 5,
-      image: 'https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=150',
-      date: '2023-12-10'
-    }
-  ];
+  const { testimonials, stats } = useTestimonials();
 
   return (
     <section 
-      id="testimonios" 
+      id="testimonials" 
       className="py-20 bg-gray-50"
       aria-labelledby="testimonials-heading"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className={containerMax}>
         <header className="text-center mb-16">
           <h2 
             id="testimonials-heading"
@@ -93,66 +46,21 @@ const Testimonials = () => {
         </div>
 
         {/* Stats Section */}
-        <section className="mt-20 bg-white rounded-2xl shadow-lg p-8" aria-labelledby="stats-heading">
+        <section className={`mt-20 ${cardBase} ${spacingCard}`} aria-labelledby="stats-heading">
           <h3 id="stats-heading" className="sr-only">Estadísticas del bufete</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center" role="list" aria-label="Estadísticas de LexFirm">
-            <div role="listitem">
-              <div className="text-3xl font-bold text-blue-800 mb-2">98%</div>
-              <div className="text-gray-600">Satisfacción del Cliente</div>
-            </div>
-            <div role="listitem">
-              <div className="text-3xl font-bold text-blue-800 mb-2">1000+</div>
-              <div className="text-gray-600">Casos Exitosos</div>
-            </div>
-            <div role="listitem">
-              <div className="text-3xl font-bold text-blue-800 mb-2">25+</div>
-              <div className="text-gray-600">Años de Experiencia</div>
-            </div>
-            <div role="listitem">
-              <div className="text-3xl font-bold text-blue-800 mb-2">24/7</div>
-              <div className="text-gray-600">Atención Disponible</div>
-            </div>
+            {stats.map((stat, index) => (
+              <div key={index} role="listitem">
+                <div className="text-3xl font-bold text-blue-800 mb-2">{stat.value}</div>
+                <div className="text-gray-600">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </section>
       </div>
 
-      {/* Structured Data for Reviews */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "LegalService",
-          "name": "LexFirm",
-          "description": "Bufete de abogados especializado en derecho penal, corporativo y familiar en Madrid",
-          "url": "https://landing-lawyers.vercel.app/",
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "127",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
-          "review": testimonials.map(testimonial => ({
-            "@type": "Review",
-            "reviewRating": {
-              "@type": "Rating",
-              "ratingValue": testimonial.rating,
-              "bestRating": "5"
-            },
-            "author": {
-              "@type": "Person",
-              "name": testimonial.name
-            },
-            "reviewBody": testimonial.content,
-            "datePublished": testimonial.date,
-            "itemReviewed": {
-              "@type": "LegalService",
-              "name": "LexFirm"
-            }
-          }))
-        })}
-      </script>
-    </section>
-  );
+            </section>
+    );
 };
 
 export default Testimonials;

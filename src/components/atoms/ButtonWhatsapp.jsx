@@ -1,6 +1,6 @@
 import React from 'react';
-import { MessageCircle } from 'lucide-react';
 import { abrirWhatsApp } from '../../utils/deviceUtils';
+import ComponenteSvg from './ComponenteSvg';
 
 const ButtonWhatsapp = () => {
   const handleClick = () => {
@@ -16,7 +16,8 @@ const ButtonWhatsapp = () => {
       aria-label="Abrir WhatsApp para consulta gratuita"
       title="Consulta gratuita por WhatsApp"
     >
-      <MessageCircle size={24} />
+      <ComponenteSvg tipo="whatsapp" cssSvg={"w-[25px] h-[25px]"} />
+      
       <span className="sr-only">WhatsApp</span>
     </button>
   );

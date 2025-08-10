@@ -1,74 +1,18 @@
 import React from 'react';
-import { 
-  Gavel, 
-  Building2, 
-  Users, 
-  Heart, 
-  Car, 
-  Shield
-} from 'lucide-react';
 import ServiceCard from '../atoms/ServiceCard';
-import { abrirWhatsApp } from '../../utils/deviceUtils';
+import { containerMax, textHeading, textBody } from '../../utils/tailwindClasses';
+import { useServices } from '../../hooks/useServices';
 
 const Services = () => {
-  const services = [
-    {
-      icon: Gavel,
-      title: 'Derecho Penal',
-      description: 'Defensa especializada en casos penales con un enfoque estratégico y personalizado.',
-      features: ['Delitos graves', 'Apelaciones', 'Defensa corporativa'],
-      slug: 'derecho-penal'
-    },
-    {
-      icon: Building2,
-      title: 'Derecho Corporativo',
-      description: 'Asesoría integral para empresas en todos los aspectos legales y regulatorios.',
-      features: ['Contratos', 'Fusiones', 'Compliance'],
-      slug: 'derecho-corporativo'
-    },
-    {
-      icon: Users,
-      title: 'Derecho Familiar',
-      description: 'Acompañamiento sensible y profesional en asuntos familiares complejos.',
-      features: ['Divorcios', 'Custodia', 'Adopciones'],
-      slug: 'derecho-familiar'
-    },
-    {
-      icon: Heart,
-      title: 'Derecho Laboral',
-      description: 'Protección de los derechos de trabajadores y empleadores.',
-      features: ['Despidos', 'Acoso laboral', 'Negociación'],
-      slug: 'derecho-laboral'
-    },
-    {
-      icon: Car,
-      title: 'Accidentes de Tráfico',
-      description: 'Representación experta en casos de lesiones por accidentes vehiculares.',
-      features: ['Indemnizaciones', 'Seguros', 'Peritajes'],
-      slug: 'accidentes-trafico'
-    },
-    {
-      icon: Shield,
-      title: 'Derecho Civil',
-      description: 'Soluciones legales para disputas civiles y protección patrimonial.',
-      features: ['Contratos', 'Propiedades', 'Herencias'],
-      slug: 'derecho-civil'
-    }
-  ];
-
-  const openWhatsApp = () => {
-    const phoneNumber = '34900123456';
-    const message = 'Hola, me interesa obtener más información sobre sus servicios legales.';
-    abrirWhatsApp(phoneNumber, message);
-  };
+  const { services, openWhatsApp } = useServices();
 
   return (
     <section 
-      id="servicios" 
+      id="services" 
       className="py-20 bg-gray-50"
       aria-labelledby="services-heading"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className={containerMax}>
         <header className="text-center mb-16 animate-fade-in-up">
           <h2 
             id="services-heading"
@@ -103,30 +47,8 @@ const Services = () => {
         </div>
       </div>
 
-      {/* Structured Data for Services */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "ItemList",
-          "name": "Servicios Legales de LexFirm",
-          "description": "Servicios especializados en derecho penal, corporativo, familiar, laboral, accidentes de tráfico y civil",
-          "itemListElement": services.map((service, index) => ({
-            "@type": "Service",
-            "position": index + 1,
-            "name": service.title,
-            "description": service.description,
-            "url": `https://landing-lawyers.vercel.app/servicios/${service.slug}`,
-            "provider": {
-              "@type": "LegalService",
-              "name": "LexFirm"
-            },
-            "serviceType": service.title,
-            "areaServed": "Madrid, España"
-          }))
-        })}
-      </script>
-    </section>
-  );
+            </section>
+    );
 };
 
 export default Services;

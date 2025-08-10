@@ -37,6 +37,50 @@
   }
 }
 
+@layer components {
+  /* Componentes de estilo reutilizables usando @apply */
+  
+  .btn-primary {
+    @apply px-4 py-2 bg-blue-800 hover:bg-blue-900 text-white font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  }
+  
+  .btn-secondary {
+    @apply px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2;
+  }
+  
+  .btn-outline {
+    @apply px-4 py-2 border-2 border-blue-800 text-blue-800 hover:bg-blue-800 hover:text-white font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  }
+  
+  .card-base {
+    @apply bg-white rounded-xl shadow-lg transition-all duration-300;
+  }
+  
+  .card-interactive {
+    @apply bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2;
+  }
+  
+  .icon-container {
+    @apply flex items-center justify-center w-16 h-16 bg-blue-100 rounded-xl;
+  }
+  
+  .text-heading {
+    @apply text-xl font-bold text-gray-900;
+  }
+  
+  .text-body {
+    @apply text-gray-600 leading-relaxed;
+  }
+  
+  .container-max {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .gradient-primary {
+    @apply bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700;
+  }
+}
+
 @keyframes fadeInUp {
   to {
     opacity: 1;

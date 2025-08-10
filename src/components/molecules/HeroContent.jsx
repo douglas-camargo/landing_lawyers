@@ -3,6 +3,7 @@ import { MessageCircle, Shield, Award, Users } from 'lucide-react';
 import Button from '../atoms/Button';
 import StatCard from '../atoms/StatCard';
 import ComponenteSvg from '../atoms/ComponenteSvg';
+import { flexCenter } from '../../utils/tailwindClasses';
 
 const HeroContent = ({ onWhatsAppClick, onServicesClick }) => {
   const stats = [

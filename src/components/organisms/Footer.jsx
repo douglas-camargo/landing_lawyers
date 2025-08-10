@@ -3,62 +3,33 @@ import {
   Phone, 
   Mail, 
   MapPin, 
-  Clock,
-  Facebook,
-  Twitter,
-  Instagram,
-  Linkedin
+  Clock
 } from 'lucide-react';
 import Logo from '../atoms/Logo';
 import FooterLink from '../atoms/FooterLink';
 import Button from '../atoms/Button';
-import { abrirWhatsApp } from '../../utils/deviceUtils';
+import { containerMax, iconSmall, spacingList } from '../../utils/tailwindClasses';
+import { useFooter } from '../../hooks/useFooter';
 
 const Footer = () => {
-  const openWhatsApp = () => {
-    const phoneNumber = '34900123456';
-    const message = 'Hola, me gustaría obtener más información sobre sus servicios legales.';
-    abrirWhatsApp(phoneNumber, message);
-  };
-
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const services = [
-    { name: 'Derecho Penal', href: '#servicios' },
-    { name: 'Derecho Corporativo', href: '#servicios' },
-    { name: 'Derecho Familiar', href: '#servicios' },
-    { name: 'Derecho Laboral', href: '#servicios' },
-    { name: 'Accidentes de Tráfico', href: '#servicios' },
-    { name: 'Derecho Civil', href: '#servicios' }
-  ];
-
-  const quickLinks = [
-    { name: 'Inicio', href: '#inicio' },
-    { name: 'Servicios', href: '#servicios' },
-    { name: 'Nosotros', href: '#nosotros' },
-    { name: 'Testimonios', href: '#testimonios' }
-  ];
-
-  const socialLinks = [
-    { name: 'Facebook', href: 'https://www.facebook.com', icon: Facebook },
-    { name: 'Twitter', href: 'https://twitter.com', icon: Twitter },
-    { name: 'Instagram', href: 'https://www.instagram.com', icon: Instagram },
-    { name: 'LinkedIn', href: 'https://www.linkedin.com', icon: Linkedin }
-  ];
+  const {
+    services,
+    quickLinks,
+    socialLinks,
+    contactInfo,
+    legalLinks,
+    openWhatsApp,
+    scrollToSection
+  } = useFooter();
 
   return (
     <footer 
-      id="contacto" 
+      id="contact" 
       className="bg-gray-900 text-white"
       role="contentinfo"
       aria-labelledby="footer-heading"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className={`${containerMax} py-16`}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <section className="space-y-6">
@@ -87,7 +58,7 @@ const Footer = () => {
           {/* Services */}
           <nav className="space-y-6" aria-labelledby="services-heading">
             <h3 id="services-heading" className="text-lg font-semibold">Servicios</h3>
-            <ul className="space-y-3" role="list">
+            <ul className={`${spacingList}`} role="list">
               {services.map((service, index) => (
                 <li key={index} role="listitem">
                   <FooterLink href={service.href}>
@@ -101,7 +72,7 @@ const Footer = () => {
           {/* Quick Links */}
           <nav className="space-y-6" aria-labelledby="quick-links-heading">
             <h3 id="quick-links-heading" className="text-lg font-semibold">Enlaces Rápidos</h3>
-            <ul className="space-y-3" role="list">
+            <ul className={`${spacingList}`} role="list">
               {quickLinks.map((link, index) => (
                 <li key={index} role="listitem">
                   <button
@@ -121,43 +92,43 @@ const Footer = () => {
             <h3 id="contact-heading" className="text-lg font-semibold">Contacto</h3>
             <address className="space-y-4 not-italic">
               <div className="flex items-start space-x-3">
-                <Phone className="h-5 w-5 text-blue-400 flex-shrink-0 mt-1" aria-hidden="true" />
+                <Phone className={`${iconSmall} text-blue-400 flex-shrink-0 mt-1`} aria-hidden="true" />
                 <div>
                   <p className="text-gray-400">Teléfono</p>
-                  <a href="tel:+34900123456" className="text-white hover:text-blue-400 transition-colors">
-                    +34 900 123 456
+                  <a href={`tel:${contactInfo.phone.replace(/\s/g, '')}`} className="text-white hover:text-blue-400 transition-colors">
+                    {contactInfo.phone}
                   </a>
                 </div>
               </div>
               
               <div className="flex items-start space-x-3">
-                <Mail className="h-5 w-5 text-blue-400 flex-shrink-0 mt-1" aria-hidden="true" />
+                <Mail className={`${iconSmall} text-blue-400 flex-shrink-0 mt-1`} aria-hidden="true" />
                 <div>
                   <p className="text-gray-400">Email</p>
-                  <a href="mailto:info@lexfirm.es" className="text-white hover:text-blue-400 transition-colors">
-                    info@lexfirm.es
+                  <a href={`mailto:${contactInfo.email}`} className="text-white hover:text-blue-400 transition-colors">
+                    {contactInfo.email}
                   </a>
                 </div>
               </div>
               
               <div className="flex items-start space-x-3">
-                <MapPin className="h-5 w-5 text-blue-400 flex-shrink-0 mt-1" aria-hidden="true" />
+                <MapPin className={`${iconSmall} text-blue-400 flex-shrink-0 mt-1`} aria-hidden="true" />
                 <div>
                   <p className="text-gray-400">Dirección</p>
                   <p className="text-white">
-                    Calle Gran Vía, 123<br />
-                    28013 Madrid, España
+                    {contactInfo.address.street}<br />
+                    {contactInfo.address.city}
                   </p>
                 </div>
               </div>
               
               <div className="flex items-start space-x-3">
-                <Clock className="h-5 w-5 text-blue-400 flex-shrink-0 mt-1" aria-hidden="true" />
+                <Clock className={`${iconSmall} text-blue-400 flex-shrink-0 mt-1`} aria-hidden="true" />
                 <div>
                   <p className="text-gray-400">Horario</p>
                   <p className="text-white">
-                    Lun - Vie: 9:00 - 18:00<br />
-                    Sáb: 9:00 - 14:00
+                    {contactInfo.schedule.weekdays}<br />
+                    {contactInfo.schedule.saturday}
                   </p>
                 </div>
               </div>
@@ -181,49 +152,18 @@ const Footer = () => {
               © 2024 LexFirm. Todos los derechos reservados.
             </p>
             <nav className="flex space-x-6 text-sm" aria-label="Enlaces legales">
-              <FooterLink href="/privacidad">Política de Privacidad</FooterLink>
-              <FooterLink href="/terminos">Términos de Servicio</FooterLink>
-              <FooterLink href="/cookies">Cookies</FooterLink>
+              {legalLinks.map((link, index) => (
+                <FooterLink key={index} href={link.href}>
+                  {link.name}
+                </FooterLink>
+              ))}
             </nav>
           </div>
         </div>
       </div>
 
-      {/* Structured Data for Contact Information */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "LegalService",
-          "name": "LexFirm",
-          "description": "Bufete de abogados especializado en derecho penal, corporativo y familiar en Madrid",
-          "url": "https://landing-lawyers.vercel.app/",
-          "telephone": "+34-900-123-456",
-          "email": "info@lexfirm.es",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Calle Gran Vía 123",
-            "addressLocality": "Madrid",
-            "postalCode": "28013",
-            "addressCountry": "ES"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 40.4168,
-            "longitude": -3.7038
-          },
-          "openingHours": "Mo-Fr 09:00-18:00, Sa 09:00-14:00",
-          "priceRange": "€€",
-          "areaServed": "Madrid, España",
-          "sameAs": [
-            "https://www.facebook.com/lexfirm.abogados",
-            "https://twitter.com/lexfirm_legal",
-            "https://www.instagram.com/lexfirm.abogados",
-            "https://www.linkedin.com/company/lexfirm-abogados"
-          ]
-        })}
-      </script>
-    </footer>
-  );
+            </footer>
+    );
 };
 
 export default Footer;
