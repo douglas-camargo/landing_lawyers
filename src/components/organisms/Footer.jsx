@@ -32,13 +32,15 @@ const Footer = () => {
       <div className={`${containerMax} py-16`}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
-          <section className="space-y-6">
-            <Logo size="lg" className="text-white" />
+          <section className="space-y-6 text-center md:text-left">
+            <div className="flex justify-center md:justify-start">
+              <Logo size="lg" className="text-white" />
+            </div>
             <p className="text-gray-400 leading-relaxed">
               Más de 25 años de experiencia en el sector legal, 
               ofreciendo servicios de alta calidad y resultados probados.
             </p>
-            <nav className="flex space-x-4" aria-label="Redes sociales">
+            <nav className="flex justify-center md:justify-start space-x-4" aria-label="Redes sociales">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
@@ -56,9 +58,9 @@ const Footer = () => {
           </section>
 
           {/* Services */}
-          <nav className="space-y-6" aria-labelledby="services-heading">
+          <nav className="space-y-6 text-center md:text-left" aria-labelledby="services-heading">
             <h3 id="services-heading" className="text-lg font-semibold">Servicios</h3>
-            <ul className={`${spacingList}`} role="list">
+            <ul className={`${spacingList} flex flex-col items-center md:items-start`} role="list">
               {services.map((service, index) => (
                 <li key={index} role="listitem">
                   <FooterLink href={service.href}>
@@ -70,9 +72,9 @@ const Footer = () => {
           </nav>
 
           {/* Quick Links */}
-          <nav className="space-y-6" aria-labelledby="quick-links-heading">
+          <nav className="space-y-6 text-center md:text-left" aria-labelledby="quick-links-heading">
             <h3 id="quick-links-heading" className="text-lg font-semibold">Enlaces Rápidos</h3>
-            <ul className={`${spacingList}`} role="list">
+            <ul className={`${spacingList} flex flex-col items-center md:items-start`} role="list">
               {quickLinks.map((link, index) => (
                 <li key={index} role="listitem">
                   <button
@@ -88,12 +90,12 @@ const Footer = () => {
           </nav>
 
           {/* Contact Info */}
-          <section className="space-y-6" aria-labelledby="contact-heading">
+          <section className="space-y-6 text-center md:text-left" aria-labelledby="contact-heading">
             <h3 id="contact-heading" className="text-lg font-semibold">Contacto</h3>
             <address className="space-y-4 not-italic">
-              <div className="flex items-start space-x-3">
-                <Phone className={`${iconSmall} text-blue-400 flex-shrink-0 mt-1`} aria-hidden="true" />
-                <div>
+              <div className="flex flex-col md:flex-row items-center md:items-start space-y-2 md:space-y-0 md:space-x-3">
+                <Phone className={`${iconSmall} text-blue-400 flex-shrink-0`} aria-hidden="true" />
+                <div className="text-center md:text-left">
                   <p className="text-gray-400">Teléfono</p>
                   <a href={`tel:${contactInfo.phone.replace(/\s/g, '')}`} className="text-white hover:text-blue-400 transition-colors">
                     {contactInfo.phone}
@@ -101,9 +103,9 @@ const Footer = () => {
                 </div>
               </div>
               
-              <div className="flex items-start space-x-3">
-                <Mail className={`${iconSmall} text-blue-400 flex-shrink-0 mt-1`} aria-hidden="true" />
-                <div>
+              <div className="flex flex-col md:flex-row items-center md:items-start space-y-2 md:space-y-0 md:space-x-3">
+                <Mail className={`${iconSmall} text-blue-400 flex-shrink-0`} aria-hidden="true" />
+                <div className="text-center md:text-left">
                   <p className="text-gray-400">Email</p>
                   <a href={`mailto:${contactInfo.email}`} className="text-white hover:text-blue-400 transition-colors">
                     {contactInfo.email}
@@ -111,9 +113,9 @@ const Footer = () => {
                 </div>
               </div>
               
-              <div className="flex items-start space-x-3">
-                <MapPin className={`${iconSmall} text-blue-400 flex-shrink-0 mt-1`} aria-hidden="true" />
-                <div>
+              <div className="flex flex-col md:flex-row items-center md:items-start space-y-2 md:space-y-0 md:space-x-3">
+                <MapPin className={`${iconSmall} text-blue-400 flex-shrink-0`} aria-hidden="true" />
+                <div className="text-center md:text-left">
                   <p className="text-gray-400">Dirección</p>
                   <p className="text-white">
                     {contactInfo.address.street}<br />
@@ -122,9 +124,9 @@ const Footer = () => {
                 </div>
               </div>
               
-              <div className="flex items-start space-x-3">
-                <Clock className={`${iconSmall} text-blue-400 flex-shrink-0 mt-1`} aria-hidden="true" />
-                <div>
+              <div className="flex flex-col md:flex-row items-center md:items-start space-y-2 md:space-y-0 md:space-x-3">
+                <Clock className={`${iconSmall} text-blue-400 flex-shrink-0`} aria-hidden="true" />
+                <div className="text-center md:text-left">
                   <p className="text-gray-400">Horario</p>
                   <p className="text-white">
                     {contactInfo.schedule.weekdays}<br />
@@ -134,24 +136,26 @@ const Footer = () => {
               </div>
             </address>
 
-            <Button
-              onClick={openWhatsApp}
-              variant="primary"
-              size="sm"
-              className="w-full bg-green-600 hover:bg-green-700"
-            >
-              Consulta Gratuita
-            </Button>
+            <div className="flex justify-center md:justify-start">
+              <Button
+                onClick={openWhatsApp}
+                variant="primary"
+                size="sm"
+                className="w-full md:w-auto bg-green-600 hover:bg-green-700"
+              >
+                Consulta Gratuita
+              </Button>
+            </div>
           </section>
         </div>
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-center md:text-left">
             <p className="text-gray-400 text-sm">
               © 2024 LexFirm. Todos los derechos reservados.
             </p>
-            <nav className="flex space-x-6 text-sm" aria-label="Enlaces legales">
+            <nav className="flex justify-center md:justify-start space-x-6 text-sm" aria-label="Enlaces legales">
               {legalLinks.map((link, index) => (
                 <FooterLink key={index} href={link.href}>
                   {link.name}
