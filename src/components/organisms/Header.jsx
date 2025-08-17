@@ -14,6 +14,11 @@ const Header = () => {
     toggleMenu 
   } = useHeader();
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setIsMenuOpen(false);
+  };
+
   return (
     <header 
       className={`fixed w-full top-0 z-50 transition-all duration-300 ${
@@ -24,7 +29,7 @@ const Header = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex justify-between items-center py-4" role="navigation" aria-label="Navegación principal">
-          <Logo />
+          <Logo onClick={scrollToTop} />
           
           <Navigation 
             items={navigationItems}

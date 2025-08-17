@@ -6,42 +6,42 @@ export const testimonials = [
     role: 'Cliente Satisfecha',
     content: 'LexFirm me ayudó a resolver un complejo caso de derecho familiar. Su profesionalismo y dedicación fueron excepcionales. Recomiendo totalmente sus servicios.',
     rating: 5,
-    avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150'
+    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face&auto=format&q=80'
   },
   {
     name: 'Carlos Rodríguez',
     role: 'Empresario',
     content: 'Como empresario, necesitaba asesoría legal confiable. LexFirm no solo resolvió mis problemas legales, sino que también me orientó para prevenir futuros conflictos.',
     rating: 5,
-    avatar: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=150'
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face&auto=format&q=80'
   },
   {
     name: 'Ana Martínez',
     role: 'Cliente Corporativa',
     content: 'La experiencia con LexFirm ha sido excelente. Su equipo de derecho corporativo es altamente competente y siempre disponible para resolver nuestras consultas.',
     rating: 5,
-    avatar: 'https://images.pexels.com/photos/3777943/pexels-photo-3777943.jpeg?auto=compress&cs=tinysrgb&w=150'
+    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face&auto=format&q=80'
   },
   {
     name: 'Luis Fernández',
     role: 'Cliente Penal',
     content: 'En un momento difícil de mi vida, LexFirm me brindó la defensa legal que necesitaba. Su experiencia en derecho penal fue fundamental para mi caso.',
     rating: 5,
-    avatar: 'https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=150'
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face&auto=format&q=80'
   },
   {
     name: 'Sofía López',
     role: 'Cliente Laboral',
     content: 'Gracias a LexFirm pude resolver mi conflicto laboral de manera satisfactoria. Su conocimiento en derecho laboral y su compromiso con el cliente son admirables.',
     rating: 5,
-    avatar: 'https://images.pexels.com/photos/3777946/pexels-photo-3777946.jpeg?auto=compress&cs=tinysrgb&w=150'
+    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face&auto=format&q=80'
   },
   {
     name: 'Roberto Silva',
     role: 'Cliente de Tráfico',
     content: 'Después de un accidente de tráfico, LexFirm me ayudó a obtener la compensación que merecía. Su dedicación y profesionalismo superaron mis expectativas.',
     rating: 5,
-    avatar: 'https://images.pexels.com/photos/2379006/pexels-photo-2379006.jpeg?auto=compress&cs=tinysrgb&w=150'
+    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face&auto=format&q=80'
   }
 ];
 
